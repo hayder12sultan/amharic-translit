@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amharic-translit"
+version = "0.1.0"
+description = "Fidel <-> Latin transliteration and normalization for Amharic text"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Amharic Translit Dev" }]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+amharic-translit = "amharic_translit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
