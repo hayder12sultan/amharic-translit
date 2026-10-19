@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>amharic-translit demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #fafafa;
+      --fg: #1a1a1a;
+      --muted: #666;
+      --border: #ddd;
+      --accent: #2b6cb0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #16181c;
+        --fg: #eaeaea;
+        --muted: #9aa0a6;
+        --border: #333;
+        --accent: #6ea8fe;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    main { max-width: 640px; margin: 0 auto; }
+    h1 { font-size: 1.4rem; margin-bottom: 0.25rem; }
+    p.sub { color: var(--muted); margin-top: 0; font-size: 0.95rem; }
+    .row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--fg);
+      font-size: 1.15rem;
+      font-family: inherit;
+      resize: vertical;
+    }
+    label { cursor: pointer; }
+    button {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: white;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    .field-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 0.3rem;
+    }
+    footer { margin-top: 2rem; color: var(--muted); font-size: 0.85rem; }
+    code { background: rgba(127,127,127,0.15); padding: 0.1rem 0.3rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>amharic-translit</h1>
+    <p class="sub">Convert between Fidel (Ethiopic) and this project's Latin transliteration scheme — entirely in your browser.</p>
+
+    <div class="row">
+      <label><input type="radio" name="direction" value="to-fidel" checked /> Latin → Fidel</label>
+      <label><input type="radio" name="direction" value="to-latin" /> Fidel → Latin</label>
+      <label><input type="checkbox" id="normalize-toggle" /> normalize spelling first</label>
+    </div>
+
+    <div class="field-label">Input</div>
+    <textarea id="input" placeholder="selam dehna neh">selam dehna neh</textarea>
+
+    <div class="row">
+      <button id="convert-btn">Convert</button>
+    </div>
+
+    <div class="field-label">Output</div>
+    <textarea id="output" readonly></textarea>
+
+    <footer>
+      Try <code>sellaam</code> with "normalize spelling first" turned on.
+      See <code>docs/MAPPING.md</code> in the repo for the full convention.
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
